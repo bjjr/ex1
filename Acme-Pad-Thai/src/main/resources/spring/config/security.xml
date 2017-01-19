@@ -41,6 +41,10 @@
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		
+		<!-- <security:intercept-url pattern="/skel/list.do" access="permitAll"/> -->
+		<!-- <security:intercept-url pattern="/skel/create.do" access="permitAll"/> -->
+		<!-- <security:intercept-url pattern="/skel/edit.do" access="permitAll"/> -->
+		
 		<security:intercept-url pattern="/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<security:intercept-url pattern="/user/create.do" access="isAnonymous()" /> 

@@ -53,6 +53,7 @@
 		<value>/views/socialActor/messages</value>
 		<value>/views/category/messages</value>
 		<value>/views/spamWord/messages</value>
+		<!-- <value>/vies/skel/messages</value> -->
 	</util:list>
 
 </beans>

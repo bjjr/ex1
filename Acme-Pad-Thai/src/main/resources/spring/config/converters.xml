@@ -18,6 +18,9 @@
 	">
 
 	<util:list id="converters">
+		<!-- <bean class="converters.SkelToStringConverter" /> -->
+		<!-- <bean class="converters.StringToSkelConverter" /> -->
+		
 		<bean class="converters.SponsorToStringConverter" />
 		<bean class="converters.StringToSponsorConverter" />
 		
