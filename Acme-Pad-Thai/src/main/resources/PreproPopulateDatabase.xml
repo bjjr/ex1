@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2016 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+	
+<!-- USER ACCOUNTS -->
+
+<bean id="userAccountA1" class="security.UserAccount">
+	<property name="username" value="administrator1" />
+	<property name="password" value="d5cee333abe432891a0de57d0ee38713" />
+	<property name="authorities">
+		<list>
+			<bean class="security.Authority">
+				<property name="authority" value="ADMINISTRATOR" />
+			</bean>
+		</list>
+	</property>
+</bean>
+
+<!-- FEE -->
+
+<bean id="fee1" class= "domain.Fee">
+	<property name="fee" value="0.25" />
+</bean>
+
+
+<!-- SPAM WORDS -->
+
+<bean id="spamword1" class="domain.SpamWord">
+	<property name="word" value="Viagra" />
+</bean>
+
+
+<bean id="spamword2" class="domain.SpamWord">
+	<property name="word" value="Cialis" />
+</bean>
+
+
+<bean id="spamword3" class="domain.SpamWord">
+	<property name="word" value="Sex" />
+</bean>
+
+
+<bean id="spamword4" class="domain.SpamWord">
+	<property name="word" value="Love" />
+</bean>
+
+
+<!-- PRIORITIES -->
+
+<bean id="priority1" class="domain.Priority">
+	<property name="priority" value="High" />
+</bean>
+
+
+<bean id="priority2" class="domain.Priority">
+	<property name="priority" value="Neutral" />
+</bean>
+
+
+<bean id="priority3" class="domain.Priority">
+	<property name="priority" value="Low" />
+</bean>
+
+<!-- UNITS -->
+
+<bean id="unit1" class="domain.Unit">
+	<property name="unit" value="Grams" />
+</bean>
+
+
+<bean id="unit2" class="domain.Unit">
+	<property name="unit" value="Kilograms" />
+</bean>
+
+
+<bean id="unit3" class="domain.Unit">
+	<property name="unit" value="Ounces" />
+</bean>
+
+
+<bean id="unit4" class="domain.Unit">
+	<property name="unit" value="Pounds" />
+</bean>
+
+
+<bean id="unit5" class="domain.Unit">
+	<property name="unit" value="Millilitres" />
+</bean>
+
+
+<bean id="unit6" class="domain.Unit">
+	<property name="unit" value="Litres" />
+</bean>
+
+
+<bean id="unit7" class="domain.Unit">
+	<property name="unit" value="Spoons" />
+</bean>
+
+
+<bean id="unit8" class="domain.Unit">
+	<property name="unit" value="Cups" />
+</bean>
+
+
+<bean id="unit9" class="domain.Unit">
+	<property name="unit" value="Pieces" />
+</bean>
+
+<!-- ADMINISTRATORS -->
+
+<bean id="administrator1" class="domain.Administrator">
+	<property name="name" value="nameAdministrator1" />
+	<property name="surname" value="surnameAdministrator1" />
+	<property name="email" value="administrator1@gmail.com" />
+	<property name="userAccount" ref="userAccountA1" />
+	<property name="socialIdentities">
+		<list>
+		</list>
+	</property>
+	<property name="sentMessages">
+		<list>
+		</list>
+	</property>
+	<property name="receivedMessages">
+		<list>
+		</list>
+	</property>
+	<property name="folders">
+		<list>
+			<ref bean = "folderA1.1" />
+			<ref bean = "folderA1.2" />
+			<ref bean = "folderA1.3" />
+			<ref bean = "folderA1.4" />
+		</list>
+	</property>
+	<property name="masterClasses" >
+		<list>
+		</list>
+	</property>
+</bean>
+
+<!-- Administrator's folders -->
+
+<bean id="folderA1.1" class="domain.Folder">
+	<property name="name" value="Inbox" />
+	<property name="obligatory" value="true" />
+	<property name="actor" ref="administrator1" />
+	<property name="messages">
+		<list>
+		</list>
+	</property>
+</bean>
+
+
+<bean id="folderA1.2" class="domain.Folder">
+	<property name="name" value="Outbox" />
+	<property name="obligatory" value="true" />
+	<property name="actor" ref="administrator1" />
+	<property name="messages">
+		<list>
+		</list>
+	</property>
+</bean>
+
+
+<bean id="folderA1.3" class="domain.Folder">
+	<property name="name" value="Trashbox" />
+	<property name="obligatory" value="true" />
+	<property name="actor" ref="administrator1" />
+	<property name="messages">
+		<list>
+		</list>
+	</property>
+</bean>
+
+
+<bean id="folderA1.4" class="domain.Folder">
+	<property name="name" value="Spambox" />
+	<property name="obligatory" value="true" />
+	<property name="actor" ref="administrator1" />
+	<property name="messages">
+		<list>
+		</list>
+	</property>
+</bean>
+
+<!-- CATEGORIES -->
+
+<bean id="defaultCategory" class="domain.Category">
+	<property name="name" value="Default Category" />
+	<property name="description" value="This is the default category / Esta es la categoría principal" />
+	<property name="picture" value="" />
+	<property name="tags">
+		<list>
+		</list>
+	</property>
+	<property name="recipes">
+		<list>
+		</list>
+	</property>
+	<property name="subcategories">
+		<list>
+		</list>
+	</property>
+</bean>
+
+<!-- INGREDIENTS -->
+
+<bean id="defaultIngredient" class="domain.Ingredient">
+	<property name="name" value="Agua" />
+	<property name="description" value="Elemento acuoso" />
+	<property name="picture" value="" />
+	<property name="properties">
+		<list>
+			<ref bean = "defaultProperty"/>
+		</list>
+	</property>
+</bean>	
+
+<!-- PROPERTIES -->	
+
+<bean id="defaultProperty" class="domain.Property">
+	<property name="name" value="Ins�pido" />
+	<property name="ingredients">
+		<list>
+			<ref bean = "defaultIngredient"/>
+		</list>
+	</property>
+</bean>
+
+</beans>
