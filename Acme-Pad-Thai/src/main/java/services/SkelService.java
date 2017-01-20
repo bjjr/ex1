@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.SkelRepository;
+import domain.Nutritionist;
 import domain.Skel;
 
 // TODO Replace skel in this service
@@ -30,7 +31,44 @@ public class SkelService {
 	
 	// Supporting services ---------------------------------------
 	
+	@Autowired
+	private NutritionistService nutritionistService;
+	
 	// Simple CRUD methods ---------------------------------------
+	
+	public Skel create() {
+		Skel res;
+		
+		res = new Skel();
+		
+		// TODO Set attributes
+		
+		return res;
+	}
+	
+	public Skel save(Skel s) {
+		Assert.notNull(s);
+		Skel res;
+		
+		if (s.getId() == 0) {
+			res = skelRepository.save(s);
+			// TODO Check the relationships
+		} else {
+			res = skelRepository.save(s);
+		}
+		
+		return res;
+	}
+	
+	public void delete(Skel s) {
+		Assert.notNull(s);
+		Assert.isTrue(s.getId() != 0);
+		
+		// TODO Control relationships
+		
+		skelRepository.delete(s.getId());
+		
+	}
 	
 	// Other business methods ------------------------------------
 	
@@ -48,6 +86,24 @@ public class SkelService {
 		
 		res = skelRepository.findAll();
 		Assert.notNull(res);
+		
+		return res;
+	}
+	
+	public Skel findOneToEdit(Skel s) {
+		Assert.notNull(s);
+		Assert.isTrue(s.getId() != 0);
+		
+		Skel res;
+		Collection<Skel> skels;
+		
+		Nutritionist n;
+		n = nutritionistService.findByPrincipal();
+		
+		// TODO CORREGIR CON LA ENTIDAD ADECUADA
+//		skels = n.getSkels();
+		
+//		Assert.isTrue(skels.contains(s));
 		
 		return res;
 	}
